@@ -28,6 +28,11 @@ int pal_checker(char *s, int l, int r)
 	else
 		return (0);
 }
+/**
+ * is_palindrome - returns 1 if the string is palindrome, 0 if not
+ * @s: tring
+ * Return: 1 if palindrom, 0 if not
+ */
 int is_palindrome(char *s)
 {
 	return (pal_checker(s, 0, _strlen_recursion(s) - 1));
