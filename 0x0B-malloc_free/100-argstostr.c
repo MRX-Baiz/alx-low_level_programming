@@ -12,7 +12,7 @@ char *argstostr(int ac, char **av)
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	for (arg = 0 ; arg < ac ; arg ++)
+	for (arg = 0 ; arg < ac ; arg++)
 		for (byte = 0 ; av[arg][byte] ; byte++)
 			size++;
 	s = malloc(sizeof(char) * size + 1);

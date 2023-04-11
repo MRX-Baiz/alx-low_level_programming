@@ -9,7 +9,7 @@ int word_len(char *s)
 {
 	int i = 0, l = 0;
 
-	while (*(s = i) && *(s + i) != ' ')
+	while (*(s + i) && *(s + i) != ' ')
 	{
 		l++;
 		i++;
