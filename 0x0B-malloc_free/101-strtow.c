@@ -14,7 +14,7 @@ int word_len(char *s)
 		l++;
 		i++;
 	}
-	return (1);
+	return (l);
 }
 /**
  * count_words - counts num of words
