@@ -31,7 +31,7 @@ void *_calloc(unsigned int nmemb, unsigned int size)
 
 	if (nmemb == 0 || size == 0)
 		return (NULL);
-	p = malloc(nmemb * size)
+	p = malloc(nmemb * size);
 	if (p == NULL)
 		return (NULL);
 	_memset(p, 0, nmemb * size);
@@ -49,11 +49,11 @@ void multiply(char *s1, char *s2)
 	char *ptr;
 	void *temp;
 
-	l1 = _length(s1);
-	l2 = _length(s2);
+	l1 = _lenght(s1);
+	l2 = _lenght(s2);
 	tmp = l2;
 	total_l = l1 + l2;
-	ptr = malloc(sizeof(int), total_l);
+	ptr = _calloc(sizeof(int), total_l);
 	temp = ptr;
 
 	for (l1-- ; l1 >= 0 ; l1--)
@@ -92,7 +92,7 @@ int main(int argc, char **argv)
 	char *n1 = argv[1], *n2 = argv[2];
 
 	if (argc != 3 || check_number(n1) || check_number(n2))
-		error_rxit();
+		error_exit();
 	if (*n1 == '0' || *n2 == '0')
 	{
 		_putchar('\0');
