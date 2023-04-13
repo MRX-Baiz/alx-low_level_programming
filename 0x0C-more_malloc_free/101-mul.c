@@ -49,8 +49,8 @@ void multiply(char *s1, char *s2)
 	char *ptr;
 	void *temp;
 
-	l1 = _length(s1);
-	l2 = _length(s2);
+	l1 = _lenght(s1);
+	l2 = _lenght(s2);
 	tmp = l2;
 	total_l = l1 + l2;
 	ptr = _calloc(sizeof(int), total_l);
