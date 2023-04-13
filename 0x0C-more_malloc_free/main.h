@@ -17,12 +17,12 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
  */
 int error_exit(void)
 {
-	char *er;
+	char *err;
 	int i;
 
-	er = "Error";
-	for (i = 0 ; er[i] != '\0' ; i++)
-		_putchar(er[i]);
+	err = "Error";
+	for (i = 0 ; err[i] != '\0' ; i++)
+		_putchar(err[i]);
 	_putchar('\n');
 	exit(98);
 }
