@@ -1,4 +1,4 @@
-#include "3-clac.h"
+#include "3-calc.h"
 
 /**
  * op_add - adds 2 int
