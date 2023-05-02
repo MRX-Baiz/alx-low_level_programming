@@ -1,58 +1,59 @@
 #include "lists.h"
 
 /**
- * _r - reallocates memory for an array of pointers to the nodes
- * @list: the old list
- * @size: size of the new list
- * @new: new node
- * Return: pointer to the new list
- */
-
-const listint_t **_r(const listint_t **list, size_t size, const listint_t *new)
-{
-	const listint_t **nl;
-	size_t a;
-
-	nl = malloc(size * sizeof(listint_t *));
-	if (nl == NULL)
-	{
-		free(list);
-		exit(98);
-	}
-	for (a = 0 ; a < size - 1 ; a++)
-		nl[a] = list[a];
-	nl[a] = new;
-	free(list);
-	return (nl);
-}
-
-/**
- * print_listint_safe - prints a listint_t linked list
+ * free_listp - frees a linked list
  * @head: head
- * Return: the number of nodes in the list
  */
+void free_listp(listp_t **head)
+{
+	listp_t *tmp, c;
 
+	if (head != NULL)
+	{
+		c = *head;
+		while ((tmp = c) != NULL)
+		{
+			c = c->next;
+			free(tmp);
+		}
+		*head = NULL;
+	}
+}
+/**
+ * print_listint_safe - prints a linked list.
+ * @head: head of a list.
+ *
+ * Return: number of nodes in the list.
+ */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t node = 0, a;
-	const listint_t **list = NULL;
+	size_t nodes = 0;
+	listp_t *h, *new, *ad;
 
+	h = NULL;
 	while (head != NULL)
 	{
-		for (a = 0 ; a < node ; a++)
+		new = malloc(sizeof(listp_t));
+		if (new == NULL)
+			exit(98);
+		new->p = (void *)head;
+		new->next = h;
+		h = new;
+		ad = h;
+		while (ad->next != NULL)
 		{
-			if (head == list[a])
+			ad = ad->next;
+			if (head == ad->p)
 			{
-				printf("->[%p] %d\n", (void *)head, head->n);
-				free(list);
-				return (node);
+				printf("-> [%p] %d\n", (void *)head, head->n);
+				free_listp(&h);
+				return (nodes);
 			}
 		}
-		node++;
-		list = _r(list, node, head);
 		printf("[%p] %d\n", (void *)head, head->n);
 		head = head->next;
+		nodes++;
 	}
-	free(list);
-	return (node);
+	free_listp(&h);
+	return (nodes);
 }
