@@ -21,10 +21,10 @@ void check_elf(unsigned char *ident)
 
 	for (i = 0; i < 4; i++)
 	{
-		if (ident[index] != 127 &&
-		    ident[index] != 'E' &&
-		    ident[index] != 'L' &&
-		    ident[index] != 'F')
+		if (ident[i] != 127 &&
+		    ident[i] != 'E' &&
+		    ident[i] != 'L' &&
+		    ident[i] != 'F')
 		{
 			dprintf(STDERR_FILENO, "Error: Not an ELF file\n");
 			exit(98);
@@ -267,16 +267,16 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
 		exit(98);
 	}
-	check_elf(h->e_ident);
+	check_elf(h->ident);
 	printf("ELF Header:\n");
-	print_magic(h->e_ident);
-	print_class(h->e_ident);
-	print_data(h->e_ident);
-	print_version(h->e_ident);
-	print_osabi(h->e_ident);
-	print_abi(h->e_ident);
-	print_type(h->e_type, h->e_ident);
-	print_entry(h->e_entry, h->e_ident);
+	print_magic(h->ident);
+	print_class(h->ident);
+	print_data(h->ident);
+	print_version(h->ident);
+	print_osabi(h->ident);
+	print_abi(h->ident);
+	print_type(h->type, h->ident);
+	print_entry(h->entry, h->ident);
 	free(h);
 	close_elf(O);
 	return (0);
