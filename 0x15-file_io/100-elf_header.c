@@ -240,7 +240,7 @@ void close_elf(int elf)
  * @argv: An array of pointers to the arguments
  * Return: 0 on success
  */
-int main(int __attribute__((__unused__)) ac, char *av[])
+int main(int __attribute__((__unused__)) argc, char **argv)
 {
 	Elf64_Ehdr *h;
 	int O, R;
